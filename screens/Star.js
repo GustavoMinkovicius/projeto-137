@@ -30,7 +30,15 @@ export default class StarScren extends Component {
       /*escreva o código para buscar dados de sua API Flask.
         Certifique-se de usar o argumento name.
         Armazene os dados obtidos no estado chamado "data"*/
-  
+        const { name } = this.state;
+        axios
+          .get(name)
+          .then((response) => {
+            this.setDetails(response.data.data);
+          })
+          .catch((error) => {
+            Alert.alert(error.message);
+          });
   };
 
   render() {
